@@ -1,0 +1,26 @@
+.technology-stack {
+  height: 140px;
+}
+
+.footer {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  z-index: 100;
+}
+
+.footer .shopkeep-logo {
+  width: 98px;
+  height: 48px;
+}
+
+.shopkeep-logo {
+  width: 240px;
+  display: block;
+}
+
+.important-heading {
+  display: inline-block;
+  background-color: #042845;
+  margin: 20px;
+}

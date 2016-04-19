@@ -1,0 +1,18 @@
+!!!
+%html
+  %head
+    %title Code Smash: Simple Transaction Service
+    %meta{content: "width=device-width, initial-scale=1.0", name: "viewport"}
+      %link{href: "//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css", rel: "stylesheet"}
+        = stylesheet_link_tag "application", media: "all"
+        = csrf_meta_tags
+  %body
+    #wrap.container
+      #header.row
+        %h1= image_tag 'shopkeep-smarter-business-logo.png'
+        %h2 Code Smash: Simple Transaction Service
+      #content
+        = yield
+    %script{src: "//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"}
+    %script{src: "//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"}
+    = javascript_include_tag "application"

@@ -1,0 +1,64 @@
+%h3 Congratulations, your Rails server is running!
+
+Your Rails server is made up of a set of HTTP endpoints; you can use
+the #{link_to 'Rake', 'http://rake.rubyforge.org'} tool to list them:
+
+%blockquote
+  = highlight_code(:shell) { 'rake routes' }.html_safe
+
+%p Each endpoint takes a HTTP request and returns a response formatted as #{link_to 'JSON', 'http://www.json.org'} (#{link_to 'examples', 'http://json.org/example.html'}).
+
+%p Click #{link_to 'here', status_path} to see the response from the 'status' endpoint. It should look something like:
+
+%blockquote
+  = highlight_code(:json) { '{"status": "Everything is working!"}' }.html_safe
+
+Only some of the endpoints are complete!
+
+%h3 What now?
+
+%p We're going to complete the endpoints using a #{link_to 'Test Driven Development', 'http://c2.com/cgi/wiki?TestDrivenDevelopment'} approach.
+
+%p
+  The 'app' directory contains the server code. The 'specs' directory contains 'specifications',
+  %em ie
+  , tests describing the desired behaviour of each endpoint.
+
+%p
+  What you're going to do is run the tests, find a failure where an endpoint is not meeting its specification, and then write the server code to make the test pass. We call this development cycle '
+  %em red, green, refactor
+  '.
+
+%p There are four exercises in total; they start very simple and get more complex.
+
+%h3 What does a test look like?
+
+We use #{link_to 'RSpec', 'http://rspec.info'} as our test tool. Basically a test consists of a series of 'expectations' which compare a method call to a #{link_to 'matcher', 'https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers'}. Here's the simplest example:
+
+%blockquote
+  = highlight_code(:ruby) { "it { expect(true).to be_true }" }.html_safe
+
+We will help you understand RSpec tests during the Code Smash but there are some #{link_to 'great guidelines here', 'http://betterspecs.org'}.
+
+%h3 How to run the tests
+
+We use #{link_to 'RSpec', 'http://rspec.info'} as our test tool. To run all our specifications:
+
+%blockquote
+  = highlight_code(:shell) { 'rspec' }.html_safe
+
+%p When a specification fails, RSpec will tell you where the failing code is. You can then open the relevant server code in your favourite editor and get to work making the test pass!
+
+%h3 ...I'm stuck! How do I debug?
+
+%p We've included a great debugger called #{link_to 'Pry', 'http://pryrepl.org'} in this setup. You can add a magic line to your tests or your server code, then execution of the tests will stop at that line and you can examine your variables, and run code interactively.
+
+%p Just add the line 'binding.pry' before your suspect code and run the test again.
+
+%p Don't forget to remove your Pry lines when submitting your finished solutions!
+
+%h3 Ruby Reference Documentation
+
+While writing your solution you may find it very useful to have the #{link_to 'Ruby reference open', 'http://www.ruby-doc.org'} in a browser, particularly #{link_to 'Array', 'http://www.ruby-doc.org/core-2.1.1/Array.html'}, #{link_to 'Hash', 'http://www.ruby-doc.org/core-2.1.1/Hash.html'} and #{link_to 'Enumerable', 'http://www.ruby-doc.org/core-2.1.1/Enumerable.html'}.
+
+You may also need to refer to the Rails documentation, particularly on #{link_to 'validations', 'http://guides.rubyonrails.org/active_record_validations.html'}.
