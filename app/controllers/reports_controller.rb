@@ -9,11 +9,12 @@ class ReportsController < WebServiceController
     resp = { }
     Sale.all.each do |sale|
       sale["items"].each do |item|
-        if !resp.key? item["name"]
-          resp[item["name"]] = { "number_of_sales" => 0, "total" => 0 }
+        itemName = item["name"]
+        if !resp.key? itemName
+          resp[itemName] = { "number_of_sales" => 0, "total" => 0 }
         end
-        resp[item["name"]]["number_of_sales"] += 1
-        resp[item["name"]]["total"] += Sale.calcPrice(item)
+        resp[itemName]["number_of_sales"] += 1
+        resp[itemName]["total"] += Sale.calcPrice(item)
       end
     end
     render json: resp
