@@ -12,26 +12,15 @@ class SalesController < WebServiceController
 
   def create
     # Calculate the total price of the sale.
-    total = 0
+    sale_params["total"] = 0
     sale_params["items"].each do |value|
-      total += value["price"].to_f
-      # Calculate discounts
-      if value.key? "discount"
-        total -= value["discount"]["amount"].to_f
-      end
+      sale_params["total"] += Sale.calcPrice(value)
     end
-    sale_params["total"] = total
 
     sale = Sale.new sale_params
+    sale.save
 
-    if sale.valid?
-      sale.save
-
-      render json: sale
-    else
-      render nil
-    end
-    
+    render json: sale
   end
 
   private
